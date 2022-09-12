@@ -12,16 +12,7 @@ submitButton.addEventListener("click", function () {
   let email = document.getElementById("input-email").value;
   let address = document.getElementById("input-address").value;
   let admin = document.getElementById("input-admin").value;
-  table.innerHTML +=
-    "<tr><td>" +
-    username +
-    "</td><td>" +
-    email +
-    "</td><td>" +
-    address +
-    "</td><td>" +
-    admin +
-    "</td></tr>";
+  table.innerHTML += "<tr><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+admin+"</td></tr>";
 });
 
 emptyButton.addEventListener("click", function () {
