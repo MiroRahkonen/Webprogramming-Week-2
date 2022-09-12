@@ -128,11 +128,12 @@ var table = document.getElementById("table");
 submitButton.addEventListener("click", checkName, false);
 
 function checkName() {
-  var username = document.getElementById("input-username").value;
-  var email = document.getElementById("input-email").value;
-  var address = document.getElementById("input-address").value;
-  var admin = document.getElementById("input-admin").value;
-  table.innerHTML += "<tr><td>" + username + "</td><td>" + email + "</td><td>" + address + "</td><td>" + admin + "</td></tr>";
+  var rows = document.getElementsByTagName();
+  var new_username = document.getElementById("input-username").value;
+  var new_email = document.getElementById("input-email").value;
+  var new_address = document.getElementById("input-address").value;
+  var new_admin = document.getElementById("input-admin").value;
+  table.innerHTML += "<tr><td>" + new_username + "</td><td>" + new_email + "</td><td>" + new_address + "</td><td>" + new_admin + "</td></tr>";
 }
 
 emptyButton.addEventListener("click", function () {

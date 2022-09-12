@@ -10,11 +10,14 @@ const table = document.getElementById("table");
 submitButton.addEventListener("click", checkName,false);
 
 function checkName(){
-  let username = document.getElementById("input-username").value;
-  let email = document.getElementById("input-email").value;
-  let address = document.getElementById("input-address").value;
-  let admin = document.getElementById("input-admin").value;
-  table.innerHTML += "<tr><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+admin+"</td></tr>";
+  var rows = document.getElementsByTagName()
+  
+  
+  let new_username = document.getElementById("input-username").value;
+  let new_email = document.getElementById("input-email").value;
+  let new_address = document.getElementById("input-address").value;
+  let new_admin = document.getElementById("input-admin").value;
+  table.innerHTML += "<tr><td>"+new_username+"</td><td>"+new_email+"</td><td>"+new_address+"</td><td>"+new_admin+"</td></tr>";
 }
 
 emptyButton.addEventListener("click", function () {
