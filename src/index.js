@@ -6,17 +6,19 @@ https://stackoverflow.com/questions/20562718/add-data-to-table-using-onclick-fun
 const submitButton = document.getElementById("submit-data");
 const emptyButton = document.getElementById("empty-table");
 const table = document.getElementById("table");
+const row = documement.getElementById("table").rows[0];
+console.log(row);
 
 submitButton.addEventListener("click", checkName,false);
 
 function checkName(){
-  var rows = document.getElementsByTagName()
-  
+  var row = documement.getElementById("table").rows[0];
   
   let new_username = document.getElementById("input-username").value;
   let new_email = document.getElementById("input-email").value;
   let new_address = document.getElementById("input-address").value;
   let new_admin = document.getElementById("input-admin").value;
+  let new_image = document.getElementById("input-image").file;
   table.innerHTML += "<tr><td>"+new_username+"</td><td>"+new_email+"</td><td>"+new_address+"</td><td>"+new_admin+"</td></tr>";
 }
 
