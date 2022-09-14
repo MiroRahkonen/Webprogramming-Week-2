@@ -7,7 +7,12 @@ const submitButton = document.getElementById("submit-data");
 const emptyButton = document.getElementById("empty-table");
 const table = document.getElementById("table");
 
-submitButton.addEventListener("click", function () {
+submitButton.addEventListener("click", addUser, false);
+
+function addUser(event) {
+  event.preventDefault();
+  let images = document.getElementById("input-image");
+  let newImage = images.files[0];
   let username = document.getElementById("input-username").value;
   let email = document.getElementById("input-email").value;
   let address = document.getElementById("input-address").value;
@@ -21,8 +26,11 @@ submitButton.addEventListener("click", function () {
     address +
     "</td><td>" +
     admin +
-    "</td></tr>";
-});
+    "</td><td>" +
+    `<img src=${URL.createObjectURL(
+      newImage
+    )} height="64" width="64"></td></tr>`;
+}
 
 emptyButton.addEventListener("click", function () {
   table.innerHTML = "";
