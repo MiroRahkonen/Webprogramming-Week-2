@@ -13,24 +13,30 @@ function addUser(event) {
   event.preventDefault();
   let images = document.getElementById("input-image");
   let newImage = images.files[0];
-  let username = document.getElementById("input-username").value;
-  let email = document.getElementById("input-email").value;
-  let address = document.getElementById("input-address").value;
-  let admin = document.getElementById("input-admin").value;
-  table.innerHTML +=
-    "<tr><td>" +
-    username +
-    "</td><td>" +
-    email +
-    "</td><td>" +
-    address +
-    "</td><td>" +
-    admin +
-    "</td><td>" +
-    `<img src=${URL.createObjectURL(
-      newImage
-    )} height="64" width="64"></td></tr>`;
+  let newUsername = document.getElementById("input-username").value;
+  let newEmail = document.getElementById("input-email").value;
+  let newAddress = document.getElementById("input-address").value;
+  let newAdmin = document.getElementById("input-admin").value;
+
+  let rows = document.getElementById("table").querySelectorAll("tr");
+  for(row in rows){
+    let oldUsername = row.firstChild.innerHTML;
+    if(newUsername == userName){
+      row.innerHTML = table.innerHTML+="<tr><td>"+newUsername+"</td><td>"+newEmail+
+      "</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
+      `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
+    }
+    else{
+      table.innerHTML+="<tr><td>"+newUsername+"</td><td>"+newEmail+
+      "</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
+      `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
+    }
+  }  
 }
+
+  table.innerHTML+="<tr><td>"+newUsername+"</td><td>"+newEmail+
+  "</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
+  `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;}
 
 emptyButton.addEventListener("click", function () {
   table.innerHTML = "";
