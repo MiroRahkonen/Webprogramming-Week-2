@@ -21,7 +21,7 @@ function addUser(event) {
   let rows = document.getElementById("table").querySelectorAll("tr");
   for(row in rows){
     let oldUsername = row.firstChild.innerHTML;
-    if(newUsername == userName){
+    if(newUsername == oldUserName){
       row.innerHTML = table.innerHTML+="<tr><td>"+newUsername+"</td><td>"+newEmail+
       "</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
       `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
