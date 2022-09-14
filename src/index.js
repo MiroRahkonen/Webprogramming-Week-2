@@ -19,24 +19,41 @@ function addUser(event) {
   let newAdmin = document.getElementById("input-admin").value;
 
   let rows = document.getElementById("table").querySelectorAll("tr");
-  for(row in rows){
-    let oldUsername = row.firstChild.innerHTML;
-    if(newUsername == oldUserName){
-      row.innerHTML = table.innerHTML+="<tr><td>"+newUsername+"</td><td>"+newEmail+
-      "</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
-      `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
+  for (let row in rows) {
+    let oldUsername = row.firstChild;
+    if (oldUsername) {
+      if (newUsername === oldUsername) {
+        row.innerHTML = table.innerHTML +=
+          "<tr><td>" +
+          newUsername +
+          "</td><td>" +
+          newEmail +
+          "</td><td>" +
+          newAddress +
+          "</td><td>" +
+          newAdmin +
+          "</td><td>" +
+          `<img src=${URL.createObjectURL(
+            newImage
+          )} height="64" width="64"></td></tr>`;
+        return;
+      }
     }
-    else{
-      table.innerHTML+="<tr><td>"+newUsername+"</td><td>"+newEmail+
-      "</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
-      `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
-    }
-  }  
+  }
+  table.innerHTML +=
+    "<tr><td>" +
+      newUsername +
+      "</td><td>" +
+      newEmail +
+      "</td><td>" +
+      newAddress +
+      "</td><td>" +
+      newAdmin +
+      "</td><td>" +
+      `<img src=${URL.createObjectURL(
+        newImage
+      )} height="64" width="64"></td></tr>`;
 }
-
-  table.innerHTML+="<tr><td>"+newUsername+"</td><td>"+newEmail+
-  "</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
-  `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;}
 
 emptyButton.addEventListener("click", function () {
   table.innerHTML = "";
