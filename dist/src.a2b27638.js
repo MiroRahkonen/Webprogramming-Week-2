@@ -125,18 +125,30 @@ https://stackoverflow.com/questions/20562718/add-data-to-table-using-onclick-fun
 var submitButton = document.getElementById("submit-data");
 var emptyButton = document.getElementById("empty-table");
 var table = document.getElementById("table");
-var row = documement.getElementById("table").rows[0];
-console.log(row);
-submitButton.addEventListener("click", checkName, false);
+submitButton.addEventListener("click", addUser, false);
 
-function checkName() {
-  var row = documement.getElementById("table").rows[0];
-  var new_username = document.getElementById("input-username").value;
-  var new_email = document.getElementById("input-email").value;
-  var new_address = document.getElementById("input-address").value;
-  var new_admin = document.getElementById("input-admin").value;
-  var new_image = document.getElementById("input-image").file;
-  table.innerHTML += "<tr><td>" + new_username + "</td><td>" + new_email + "</td><td>" + new_address + "</td><td>" + new_admin + "</td></tr>";
+function addUser(event) {
+  event.preventDefault();
+  var images = document.getElementById("input-image");
+  var newImage = images.files[0];
+  var newUsername = document.getElementById("input-username").value;
+  var newEmail = document.getElementById("input-email").value;
+  var newAddress = document.getElementById("input-address").value;
+  var newAdmin = document.getElementById("input-admin").value;
+  var rows = document.getElementById("table").querySelectorAll("tr");
+
+  for (var row in rows) {
+    var oldUsername = row.firstChild;
+
+    if (oldUsername) {
+      if (newUsername === oldUsername) {
+        row.innerHTML = "<tr><td>" + newUsername + "</td><td>" + newEmail + "</td><td>" + newAddress + "</td><td>" + newAdmin + "</td><td>" + "<img src=".concat(URL.createObjectURL(newImage), " height=\"64\" width=\"64\"></td></tr>");
+        return;
+      }
+    }
+  }
+
+  table.innerHTML += "<tr><td>" + newUsername + "</td><td>" + newEmail + "</td><td>" + newAddress + "</td><td>" + newAdmin + "</td><td>" + "<img src=".concat(URL.createObjectURL(newImage), " height=\"64\" width=\"64\"></td></tr>");
 }
 
 emptyButton.addEventListener("click", function () {

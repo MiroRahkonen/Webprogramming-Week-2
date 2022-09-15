@@ -6,20 +6,31 @@ https://stackoverflow.com/questions/20562718/add-data-to-table-using-onclick-fun
 const submitButton = document.getElementById("submit-data");
 const emptyButton = document.getElementById("empty-table");
 const table = document.getElementById("table");
-const row = documement.getElementById("table").rows[0];
-console.log(row);
 
-submitButton.addEventListener("click", checkName,false);
+submitButton.addEventListener("click", addUser, false);
 
-function checkName(){
-  var row = documement.getElementById("table").rows[0];
-  
-  let new_username = document.getElementById("input-username").value;
-  let new_email = document.getElementById("input-email").value;
-  let new_address = document.getElementById("input-address").value;
-  let new_admin = document.getElementById("input-admin").value;
-  let new_image = document.getElementById("input-image").file;
-  table.innerHTML += "<tr><td>"+new_username+"</td><td>"+new_email+"</td><td>"+new_address+"</td><td>"+new_admin+"</td></tr>";
+function addUser(event) {
+  event.preventDefault();
+  let images = document.getElementById("input-image");
+  let newImage = images.files[0];
+  let newUsername = document.getElementById("input-username").value;
+  let newEmail = document.getElementById("input-email").value;
+  let newAddress = document.getElementById("input-address").value;
+  let newAdmin = document.getElementById("input-admin").value;
+
+  let rows = document.getElementById("table").querySelectorAll("tr");
+  for (let row in rows) {
+    let oldUsername = row.firstChild;
+    if (oldUsername) {
+      if (newUsername === oldUsername) {
+        row.innerHTML ="<tr><td>"+newUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
+        `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
+        return;
+      }
+    }
+  }
+  table.innerHTML +="<tr><td>"+newUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"
+  +`<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
 }
 
 emptyButton.addEventListener("click", function () {
