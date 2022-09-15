@@ -13,6 +13,13 @@ function addUser(event) {
   event.preventDefault()
   let images = document.getElementById("input-image")
   let newImage = images.files[0]
+  let newImagesrc
+  if (!newImage) {
+    newImagesrc = ""
+  } else {
+    newImagesrc = URL.createObjectURL(newImage)
+  }
+
   let newUsername = document.getElementById("input-username").value
   let newEmail = document.getElementById("input-email").value
   let newAddress = document.getElementById("input-address").value
@@ -42,9 +49,8 @@ function addUser(event) {
           "</td><td>" +
           newAdmin +
           "</td><td>" +
-          `<img src=${URL.createObjectURL(
-            newImage
-          )} height="64" width="64"></td></tr>`
+          `<img src=${newImagesrc} height="64" width="64"></td></tr>`
+
         return
       }
     }
@@ -59,9 +65,7 @@ function addUser(event) {
     "</td><td>" +
     newAdmin +
     "</td><td>" +
-    `<img src=${URL.createObjectURL(
-      newImage
-    )} height="64" width="64"></td></tr>`
+    `<img src=${newImagesrc} height="64" width="64"></td></tr>`
 }
 
 emptyButton.addEventListener("click", function () {
