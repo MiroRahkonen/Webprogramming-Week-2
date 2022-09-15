@@ -18,21 +18,21 @@ function addUser(event) {
   let newAddress = document.getElementById("input-address").value;
   let newAdmin = document.getElementById("input-admin").value;
 
-  let rows = document.getElementById("table").querySelectorAll("tr");
-  for (let row in rows) {
-    let oldUsername = row.firstChild;
+  let table = document.getElementById("table");
+  let tableLength = table.rows.length;
+  console.log(table.rows[0].cells[0].innerHTML);
+  console.log(table.rows.length);
+  for (let i=0;i < tableLength;i++) {
+    let oldUsername = table.rows[i].cells[0].innerHTML;
+    console.log(oldUsername);
     if (oldUsername) {
       if (newUsername === oldUsername) {
-        row.innerHTML ="<tr><td>"+newUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
+        table.rows[i].innerHTML ="<tr><td id='username'>"+oldUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
         `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
         return;
       }
     }
   }
-  table.innerHTML +="<tr><td>"+newUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"
+  table.innerHTML +="<tr><td id='username'>"+newUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"
   +`<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
 }
-
-emptyButton.addEventListener("click", function () {
-  table.innerHTML = "";
-});
