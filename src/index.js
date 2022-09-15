@@ -23,36 +23,14 @@ function addUser(event) {
     let oldUsername = row.firstChild;
     if (oldUsername) {
       if (newUsername === oldUsername) {
-        row.innerHTML = table.innerHTML +=
-          "<tr><td>" +
-          newUsername +
-          "</td><td>" +
-          newEmail +
-          "</td><td>" +
-          newAddress +
-          "</td><td>" +
-          newAdmin +
-          "</td><td>" +
-          `<img src=${URL.createObjectURL(
-            newImage
-          )} height="64" width="64"></td></tr>`;
+        row.innerHTML ="<tr><td>"+newUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"+
+        `<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
         return;
       }
     }
   }
-  table.innerHTML +=
-    "<tr><td>" +
-      newUsername +
-      "</td><td>" +
-      newEmail +
-      "</td><td>" +
-      newAddress +
-      "</td><td>" +
-      newAdmin +
-      "</td><td>" +
-      `<img src=${URL.createObjectURL(
-        newImage
-      )} height="64" width="64"></td></tr>`;
+  table.innerHTML +="<tr><td>"+newUsername+"</td><td>"+newEmail+"</td><td>"+newAddress+"</td><td>"+newAdmin+"</td><td>"
+  +`<img src=${URL.createObjectURL(newImage)} height="64" width="64"></td></tr>`;
 }
 
 emptyButton.addEventListener("click", function () {
